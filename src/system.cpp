@@ -22,15 +22,15 @@ Processor& System::Cpu() { return cpu_; }
 
 // TODO: Return a container composed of the system's processes
 vector<Process>& System::Processes() {    
-  processes_.clear();
+  process_.clear();
   vector<int> pids = LinuxParser::Pids();
   for (int i=0; i<(int)pids.size(); ++i) {
   	string ram = LinuxParser::Ram(pids[i]); //active process
     if (!ram.empty()) {
-    	processes_.push_back(Process(pids[i]));
+    	process_.push_back(Process(pids[i]));
     }
   }
-  return processes_;
+  return process_;
 }
 
 // TODO: Return the system's kernel identifier (string)
